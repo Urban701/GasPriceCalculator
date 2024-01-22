@@ -45,6 +45,7 @@ public record DataService(String url) {
         return tBody.select("tr");
     }
 
+    // test
     private double getPrice(String userRequest) throws IOException {
         final String[] priceString = {""};
         Elements tableRows = getTableRows(this.url());
