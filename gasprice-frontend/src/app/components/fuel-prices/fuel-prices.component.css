@@ -1,0 +1,63 @@
+/* Styles for FuelPricesComponent */
+:host {
+  display: block; /* Allows for margin/padding on the component itself if needed */
+  margin-bottom: 20px;
+}
+
+h3 {
+  color: #333;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+button {
+  margin-bottom: 15px;
+  /* Uses global button styles, can add specific overrides here if needed */
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+li {
+  padding: 10px 15px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
+li .fuel-name {
+  font-weight: 500;
+  color: #555;
+}
+
+li .fuel-price {
+  font-weight: bold;
+  color: #007bff; /* Or another color to highlight the price */
+}
+
+/* Loading and error messages will use global .loading-message and .error-message styles */
+/* Add specific tweaks here if needed */
+.loading-message p, .error-message p, .no-data-message p {
+    margin: 0; /* Remove default paragraph margin if it's inside the styled div */
+}
+
+.no-data-message {
+    padding: 12px;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    color: #555;
+    border-radius: 4px;
+    margin-top: 10px;
+}

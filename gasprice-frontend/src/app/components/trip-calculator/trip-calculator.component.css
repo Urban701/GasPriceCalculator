@@ -1,0 +1,60 @@
+/* Styles for TripCalculatorComponent */
+:host {
+  display: block;
+}
+
+h3 {
+  color: #333;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+form div {
+  margin-bottom: 12px;
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+  align-items: center;
+}
+
+form label {
+  flex: 1 1 200px; /* Grow, shrink, basis */
+  min-width: 180px; /* Ensure label text isn't too squished */
+  margin-right: 10px; /* Space between label and input */
+  margin-bottom: 5px; /* Space below label if it wraps */
+  font-weight: 500;
+  color: #555;
+}
+
+form input[type="number"],
+form select {
+  flex: 2 1 250px; /* Grow more than label, basis */
+  /* Using global styles for padding, border, etc. */
+}
+
+/* Ensure button uses global styles or override here */
+form button {
+  margin-top: 10px;
+  /* Example of overriding global if needed: background-color: #28a745; */
+}
+
+/* Loading, error, and result messages will use global styles */
+/* Add specific tweaks here if needed */
+.loading-message p, .error-message p, .result-message h4, .result-message p {
+  margin: 0; /* Remove default paragraph/header margin */
+}
+
+.result-message {
+  /* Using .success-message global class for background/border/color */
+  /* Can override if a different look is desired for results specifically */
+  /* background-color: #d1ecf1; */ /* Example: info blue */
+  /* border-color: #bee5eb; */
+  /* color: #0c5460; */
+  margin-top: 20px;
+  padding: 15px;
+}
+
+.result-message h4 {
+  font-size: 1.2rem;
+  margin-bottom: 5px; /* Space between title and value if there was one */
+}

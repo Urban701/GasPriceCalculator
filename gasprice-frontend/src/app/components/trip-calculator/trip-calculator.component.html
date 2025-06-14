@@ -1,0 +1,39 @@
+<div>
+  <h3>Calculate Trip Cost</h3>
+  <form (ngSubmit)="onSubmit()" #tripForm="ngForm">
+    <div>
+      <label for="kilometersDriven">Kilometers Driven:</label>
+      <input type="number" id="kilometersDriven" name="kilometersDriven"
+             [(ngModel)]="tripRequest.kilometersDriven" required min="0.01">
+    </div>
+
+    <div>
+      <label for="fuelUsagePer100Km">Fuel Usage (liters per 100km):</label>
+      <input type="number" id="fuelUsagePer100Km" name="fuelUsagePer100Km"
+             [(ngModel)]="tripRequest.fuelUsagePer100Km" required min="0.01">
+    </div>
+
+    <div>
+      <label for="fuelType">Fuel Type:</label>
+      <select id="fuelType" name="fuelType" [(ngModel)]="tripRequest.fuelType" required>
+        <option *ngFor="let type of fuelTypes" [value]="type">{{ type }}</option>
+      </select>
+    </div>
+
+    <button type="submit" [disabled]="isLoading || tripForm.invalid">
+      {{ isLoading ? 'Calculating...' : 'Calculate Cost' }}
+    </button>
+  </form>
+
+  <div *ngIf="isLoading" class="loading-message">
+    <p>Calculating trip cost...</p>
+  </div>
+
+  <div *ngIf="error" class="error-message">
+    <p>{{ error }}</p>
+  </div>
+
+  <div *ngIf="calculatedCost !== null && !isLoading && !error" class="success-message result-message"> <!-- Used global success-message -->
+    <h4>Estimated Trip Cost: {{ calculatedCost | currency:'EUR':'symbol':'1.2-2' }}</h4>
+  </div>
+</div>

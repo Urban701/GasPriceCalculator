@@ -1,0 +1,26 @@
+<div>
+  <h3>Current Fuel Prices in Austria</h3>
+  <button (click)="fetchPrices()" [disabled]="isLoading">
+    {{ isLoading ? 'Loading...' : 'Refresh Prices' }}
+  </button>
+
+  <div *ngIf="isLoading" class="loading-message">
+    <p>Loading prices...</p>
+  </div>
+
+  <div *ngIf="error" class="error-message">
+    <p>{{ error }}</p>
+  </div>
+
+  <div *ngIf="!isLoading && !error && prices && priceKeys.length > 0">
+    <ul>
+      <li *ngFor="let key of priceKeys">
+        {{ key }}: {{ prices!.get(key) | currency:'EUR':'symbol':'1.3-3' }} per liter
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="!isLoading && !error && (!prices || priceKeys.length === 0)" class="no-data-message">
+    <p>No fuel price data to display. Try refreshing.</p>
+  </div>
+</div>
